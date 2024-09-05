@@ -86,7 +86,7 @@ export const config: VendureConfig = {
                 verifyEmailAddressUrl: 'http://localhost:8080/verify',
                 passwordResetUrl: 'http://localhost:8080/password-reset',
                 changeEmailAddressUrl: 'http://localhost:8080/verify-email-address-change'
-            },
+            }
         }),
         AdminUiPlugin.init({
             route: 'admin',
