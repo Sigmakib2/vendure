@@ -5,7 +5,7 @@ import CollectionCard from '~/components/collection-card/CollectionCard';
 import Filters from '~/components/facet-filter-controls/Filters';
 import FiltersButton from '~/components/filters-button/FiltersButton';
 import ProductCard from '~/components/products/ProductCard';
-import { SearchResponse } from '~/generated/graphql';
+import { SearchResponse} from '~/generated/graphql';
 import { getCollectionBySlug } from '~/providers/shop/collections/collections';
 import {
 	searchQueryWithCollectionSlug,
@@ -100,7 +100,6 @@ export default component$(() => {
 				<h2 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 my-8">
 					{collectionSignal.value.name}
 				</h2>
-				<div dangerouslySetInnerHTML= {collectionSignal.value.description}></div>
 				<div>
 					{!!state.facedValues.length && (
 						<FiltersButton
@@ -151,6 +150,14 @@ export default component$(() => {
 					</div>
 				</div>
 			</div>
+			<div class=" mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+				<div class="text-center">
+					<h2 class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+						Know about our {collectionSignal.value.name} Collection
+					</h2>
+				</div>
+			</div>
+			<div dangerouslySetInnerHTML={collectionSignal.value.description}></div>
 		</div>
 	);
 });
