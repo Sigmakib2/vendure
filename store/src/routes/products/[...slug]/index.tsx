@@ -7,13 +7,13 @@ import CheckIcon from '~/components/icons/CheckIcon';
 import HeartIcon from '~/components/icons/HeartIcon';
 import Price from '~/components/products/Price';
 import StockLevelLabel from '~/components/stock-level-label/StockLevelLabel';
-import TopReviews from '~/components/top-reviews/TopReviews';
+//import TopReviews from '~/components/top-reviews/TopReviews';
 import { APP_STATE } from '~/constants';
 import { Order, OrderLine, Product } from '~/generated/graphql';
 import { addItemToOrderMutation } from '~/providers/shop/orders/order';
 import { getProductBySlug } from '~/providers/shop/products/products';
 import { Variant } from '~/types';
-import { cleanUpParams, generateDocumentHead, isEnvVariableEnabled } from '~/utils';
+import { cleanUpParams, generateDocumentHead } from '~/utils';
 
 export const useProductLoader = routeLoader$(async ({ params }) => {
 	const { slug } = cleanUpParams(params);
@@ -61,9 +61,6 @@ export default component$(() => {
 		<div>
 			<div class="max-w-6xl mx-auto px-4 py-10">
 				<div>
-					<h2 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 my-8">
-						{productSignal.value.name}
-					</h2>
 					<Breadcrumbs
 						items={
 							productSignal.value.collections[productSignal.value.collections.length - 1]
@@ -107,16 +104,14 @@ export default component$(() => {
 							</span>
 						</div>
 						<div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
-							<div class="">
-								<h3 class="sr-only">Description</h3>
-								<div
-									class="text-base text-gray-700"
-									dangerouslySetInnerHTML={productSignal.value.description}
-								/>
-							</div>
+
+							<h1 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 my-8">
+								{productSignal.value.name}
+							</h1>
+
 							{1 < productSignal.value.variants.length && (
 								<div class="mt-4">
-									<label class="block text-sm font-medium text-gray-700">Select option</label>
+									<label class="block text-sm font-medium text-gray-700">Select Variant</label>
 									<select
 										class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md"
 										value={selectedVariantIdSignal.value}
@@ -214,12 +209,10 @@ export default component$(() => {
 						</div>
 					</div>
 				</div>
+				<hr class="mt-10" />
+				<p class=""><strong>More about {productSignal.value.name}</strong></p>
+				<div dangerouslySetInnerHTML={productSignal.value.description}></div>
 			</div>
-			{isEnvVariableEnabled('VITE_SHOW_REVIEWS') && (
-				<div class="mt-24">
-					<TopReviews />
-				</div>
-			)}
 		</div>
 	);
 });
