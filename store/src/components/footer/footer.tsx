@@ -1,7 +1,7 @@
 import { component$, useContext } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { APP_STATE } from '~/constants';
-import GitIcon from '../icons/GitIcon';
+//import GitIcon from '../icons/GitIcon';
 
 export default component$(() => {
 	const collections = useContext(APP_STATE).collections.filter(
@@ -105,14 +105,7 @@ export default component$(() => {
 					</div>
 				</div>
 				<div class="mt-8 border-t pt-8">
-					<a
-						class="flex items-center space-x-4 font-medium text-gray-500 hover:text-gray-700"
-						target="_blank"
-						href="https://github.com/vendure-ecommerce/storefront-qwik-starter"
-					>
-						<GitIcon />
-						<span>github.com/vendure-ecommerce/storefront-qwik-starter</span>
-					</a>
+					
 				</div>
 			</div>
 		</footer>

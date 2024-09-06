@@ -17,6 +17,7 @@ gql`
 				id
 				name
 				slug
+				description
 				parent {
 					name
 				}
@@ -34,6 +35,7 @@ gql`
 		collection(slug: $slug, id: $id) {
 			id
 			name
+			description
 			slug
 			breadcrumbs {
 				id

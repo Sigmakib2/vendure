@@ -100,6 +100,7 @@ export default component$(() => {
 				<h2 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 my-8">
 					{collectionSignal.value.name}
 				</h2>
+				<div>{collectionSignal.value.description}</div>
 				<div>
 					{!!state.facedValues.length && (
 						<FiltersButton
