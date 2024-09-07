@@ -19,6 +19,7 @@ p {
 
 h2 {
 	font-size: 25px;
+	margin-top: 20px;
 }
 
 table,
@@ -37,4 +38,14 @@ th,
 td {
 	padding: 5px;
 	padding-left: 5px;
+}
+
+.cms ul {
+	list-style-type: circle;
+	margin-left: 50px;
+	margin-top: 15px;
+}
+
+.cms th {
+	background: #d0e1ff;
 }

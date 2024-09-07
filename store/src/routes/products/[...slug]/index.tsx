@@ -4,7 +4,6 @@ import { Image } from 'qwik-image';
 import Alert from '~/components/alert/Alert';
 import Breadcrumbs from '~/components/breadcrumbs/Breadcrumbs';
 import CheckIcon from '~/components/icons/CheckIcon';
-import HeartIcon from '~/components/icons/HeartIcon';
 import Price from '~/components/products/Price';
 import StockLevelLabel from '~/components/stock-level-label/StockLevelLabel';
 //import TopReviews from '~/components/top-reviews/TopReviews';
@@ -70,10 +69,11 @@ export default component$(() => {
 					<div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start mt-4 md:mt-12">
 						<div class="w-full max-w-2xl mx-auto sm:block lg:max-w-none">
 							<span class="rounded-md overflow-hidden">
-								<div class="h-[400px] w-full md:w-[400px]">
+
+								<div class="h-[400px] w-full md:w-[400px] group relative overflow-hidden">
 									<Image
 										layout="fixed"
-										class="object-center object-cover rounded-lg mx-auto"
+										class="object-center object-cover rounded-lg mx-auto transform transition duration-300 ease-in-out group-hover:scale-110 border-4 border-gray-200 shadow-lg"
 										width="400"
 										height="400"
 										src={currentImageSig.value.preview + '?w=400&h=400&format=webp'}
@@ -81,13 +81,14 @@ export default component$(() => {
 									/>
 								</div>
 								{productSignal.value.assets.length > 1 && (
-									<div class="w-full md:w-[400px] my-2 flex flex-wrap gap-3 justify-center">
+
+									<div class="w-full md:w-[400px] my-6 flex flex-wrap gap-3 justify-center">
 										{productSignal.value.assets.map((asset, key) => (
 											<Image
 												key={key}
 												layout="fixed"
 												class={{
-													'object-center object-cover rounded-lg': true,
+													'object-center object-cover rounded-lg cursor-pointer border-2 border-gray-200 shadow-sm': true,
 													'border-b-8 border-primary-600': currentImageSig.value.id === asset.id,
 												}}
 												width="80"
@@ -103,6 +104,8 @@ export default component$(() => {
 								)}
 							</span>
 						</div>
+
+
 						<div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
 
 							<h1 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 my-8">
@@ -113,7 +116,7 @@ export default component$(() => {
 								<div class="mt-4">
 									<label class="block text-sm font-medium text-gray-700">Select Variant</label>
 									<select
-										class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md"
+										class="mt-1 block w-full pl-3 pr-10 py-4 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md"
 										value={selectedVariantIdSignal.value}
 										onChange$={(_, el) => (selectedVariantIdSignal.value = el.value)}
 									>
@@ -171,16 +174,9 @@ export default component$(() => {
 											$localize`Add to cart`
 										)}
 									</button>
-									<button
-										type="button"
-										class="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-									>
-										<HeartIcon />
-										<span class="sr-only">{$localize`Add to favorites`}</span>
-									</button>
 								</div>
 							</div>
-							<div class="mt-2 flex items-center space-x-2">
+							<div class="mt-5 flex items-center space-x-2">
 								<span class="text-gray-500">{selectedVariantSignal.value?.sku}</span>
 								<StockLevelLabel stockLevel={selectedVariantSignal.value?.stockLevel} />
 							</div>
@@ -210,8 +206,12 @@ export default component$(() => {
 					</div>
 				</div>
 				<hr class="mt-10" />
-				<p class=""><strong>More about {productSignal.value.name}</strong></p>
-				<div dangerouslySetInnerHTML={productSignal.value.description}></div>
+				<div class="text-xl font-bold">
+					<div class="bg-blue-100 p-4">
+						<p class=""><strong>More about {productSignal.value.name}</strong></p>
+					</div>
+				</div>
+				<div class="cms selection:bg-blue-100" dangerouslySetInnerHTML={productSignal.value.description}></div>
 			</div>
 		</div>
 	);

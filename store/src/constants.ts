@@ -6,7 +6,7 @@ export const AUTH_TOKEN = 'authToken';
 export const CUSTOMER_NOT_DEFINED_ID = 'CUSTOMER_NOT_DEFINED_ID';
 export const HEADER_AUTH_TOKEN_KEY = 'vendure-auth-token';
 export const IMAGE_RESOLUTIONS = [1000, 800, 600, 400];
-export const HOMEPAGE_IMAGE = '/homepage.webp';
+export const HOMEPAGE_IMAGE = 'https://images.unsplash.com/photo-1699631559529-83389014055c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 export const DEFAULT_METADATA_URL = 'https://qwik-storefront.vendure.io/';
 export const DEFAULT_METADATA_TITLE = 'Vendure Qwik Storefront';
 export const DEFAULT_METADATA_DESCRIPTION =
